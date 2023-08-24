@@ -7,15 +7,19 @@
 <body>
   <h1>TodoList</h1>
   <h3>マイタスク</h3>
-  <!-- タイトル別に並び替え -->
-  <form method="get" th:action="@{/sort}">
-    <input type="submit" value="title" />
-  </form>
-  <!-- 基本日付順に表示 -->
-  <form method="get" th:action="@{/}">
-    <input type="submit" value="time" />
-  </form>
+
   
+<form method="get" th:action="@{/sort}">
+	<label>
+		<input type="radio" name="sort" value="title"> タイトル順で並べ替え
+	</label>
+ 	<label>
+		 <input type="radio" name="sort" value="date"> 日付順で並べ替え
+	</label>
+	<input type="submit" value="Sort">
+
+</form>
+
   <!-- 更新 -->
   <form method="post" th:action="@{/update}" th:each="todo : ${todos}" >
     <input type="checkbox"name="done_flg" value="1"/>
