@@ -11,6 +11,8 @@ public interface TodoMapper {
     public List<Todo> selectTitle();
     //期限順
     public List<Todo> selectTime();
+    
+    public List<Todo> selectPriority();
     //完了済み
     public List<Todo> selectComplete();
     
