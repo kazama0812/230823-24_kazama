@@ -23,25 +23,27 @@ public class TodoController {
         return "index";
     }
     
-    //sort追加
+  //sort追加
     @RequestMapping("/sort")  
     public String sort(@ModelAttribute("sort") String sort, Model model) {
 
-      List<Todo> doneList = todoMapper.selectComplete(); 
-      
-      List<Todo> list;
-      
-      if(sort.equals("title")) {
-        list = todoMapper.selectTitle();
-      } else {  
-        list = todoMapper.selectTime();
-      }
+     List<Todo> doneList = todoMapper.selectComplete(); 
+          
+    List<Todo> list;
+          
+        if (sort.equals("title")) {
+            list = todoMapper.selectTitle();
+        } else if (sort.equals("priority")) {
+            list = todoMapper.selectPriority();
+        } else {
+            list = todoMapper.selectTime();
+        }
+    model.addAttribute("todos", list);
+    model.addAttribute("doneTodos", doneList);
 
-      model.addAttribute("todos", list);
-      model.addAttribute("doneTodos", doneList);
+    return "index";
+     }
 
-      return "index";
-    }
     @RequestMapping(value="/add")
     public String add(Todo todo) {
         todoMapper.add(todo);

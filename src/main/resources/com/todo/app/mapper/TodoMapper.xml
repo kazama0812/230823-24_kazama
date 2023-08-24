@@ -14,6 +14,11 @@
     select * from todo_items where done_flg = 0 order by title asc
   </select>
   
+  <select id="selectPriority" resultType="com.todo.app.entity.Todo">
+    select * from todo_items where done_flg = 0 order by priority asc
+  </select>
+  
+  
   <select id="selectComplete" resultType="com.todo.app.entity.Todo">
     select * from todo_items where done_flg = 1
   </select>

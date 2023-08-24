@@ -5,10 +5,27 @@
 <title>TodoApp</title>
 </head>
 <body>
+	<style>
+	body {
+		font-family: Arial, sans-serif;
+		text-align: center;
+		background-color: rgb(139, 175, 180);
+	}
+	
+	input[type="submit"] {
+		background-color: #475B5A;
+		border-radius: 4px;
+		color: white;
+	}
+	
+	h1 {
+  		font-size: 70px;
+  		font-weight: 600;
+	}
+</style>
   <h1>TodoList</h1>
   <h3>マイタスク</h3>
 
-  
 <form method="get" th:action="@{/sort}">
 	<label>
 		<input type="radio" name="sort" value="title"> タイトル順で並べ替え
@@ -16,9 +33,14 @@
  	<label>
 		 <input type="radio" name="sort" value="date"> 日付順で並べ替え
 	</label>
+	<label>
+		 <input type="radio" name="sort" value="priority"> 優先度順で並べ替え
+	</label>
+
 	<input type="submit" value="Sort">
 
 </form>
+
 
   <!-- 更新 -->
   <form method="post" th:action="@{/update}" th:each="todo : ${todos}" >
